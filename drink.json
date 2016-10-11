@@ -1,0 +1,31 @@
+[{
+  "id": 101,
+  "name": "CocaCola 1L",
+  "desc": "",
+  "price": "59"
+},
+{
+  "id": 102,
+  "name": "Fanta 1L",
+  "desc": "",
+  "price": "59"
+},
+{
+  "id": 103,
+  "name": "Vinea 0,5L",
+  "desc": "",
+  "price": "59"
+},
+{
+  "id": 104,
+  "name": "Sprite 0,5L",
+  "desc": "",
+  "price": "59"
+},
+{
+  "id": 201,
+  "name": "Veltlínské zelené 0,75L",
+  "desc": "Velmi vyvážený Veltlín s typickým charakterem pro oblast Weinviertel.",
+  "price": "182"
+}
+]

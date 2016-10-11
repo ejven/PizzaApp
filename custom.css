@@ -1,0 +1,149 @@
+.pizza-buttons
+{
+	width: 100%;
+	text-align: center;
+	margin-top: 8px;
+}
+
+.pizza-buttons .price
+{
+	width: 80%;
+	font-size: 120%;
+}
+
+.pizza-buttons .added
+{
+	font-weight: bold;
+	color: #f0ad4e;
+}
+
+.pizza-buttons .plus
+{
+
+}
+.pizza-buttons .minus
+{
+
+}
+
+#pizza-list li h4 span:after, #order-list li h4 span:after
+{
+    content: ".\00a0";
+}
+
+.pizzanavbar
+{
+	display: table;
+	table-layout: fixed;
+	bottom: 0;
+	position: fixed;
+	width: 100%;
+	height: 50px;
+	z-index: 10;
+	background-color: black;
+	font-size: 150%;
+	
+}
+.pizzanavbar a
+{
+	display: table-cell;
+	width: 1%;
+	height: 50px;
+	text-align: center;
+	vertical-align: middle;
+	color: #39b3d7;
+}
+
+.pizzanavbar a.active
+{
+	color: white;
+}
+
+.home
+{
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.openhours
+{
+	margin: 0 auto;
+	width: 200px;
+	table-layout: fixed;
+}
+
+.openhours td, .openhours th
+{
+	text-align: center;
+}
+
+body
+{
+	padding-bottom: 50px;
+}
+
+h1
+{
+	text-align: center;
+}
+
+.submit
+{
+	width: 100%;
+}
+
+.submit .btn
+{
+	width: 50%;
+	font-size: 19px;
+	font-weight: bold;
+}
+
+.total
+{
+	text-align: center;
+	font-size: 19px;
+	font-weight: bold;
+}
+
+.panel-heading
+{
+	font-size: 19px;
+}
+
+label.error
+{
+	color: #f39c12;
+}
+
+.empty-order
+{
+	padding: 15px;
+	text-align: center;
+	font-size: 19px;
+}
+
+.submit
+{
+	margin-bottom: 20px;
+}
+
+#order-list .price
+{
+	font-weight: bold;
+}
+
+.main-picture
+{
+	margin: 20px 0;
+}
+
+h1, h2
+{
+	color: #f0ad4e;
+}
+
+p
+{
+	overflow-x: hidden;
+}

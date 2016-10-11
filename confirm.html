@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+    <title>Pizzerie</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="bootstrap.min.css" rel="stylesheet">
+	<link href="custom.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    
+	<nav class="pizzanavbar" role="navigation">
+		<a href="/index.html"><span class="glyphicon glyphicon-home"></a>
+		<a href="/pizza.html"><span class="glyphicon glyphicon-dashboard"></a>
+		<a href="/drink.html"><span class="glyphicon glyphicon-glass"></a>
+		<a class="active" href="/confirm.html"><span class="glyphicon glyphicon-shopping-cart"></a>
+	</nav>
+	
+	<h1>Objednat</h1>
+
+	<ul id="order-list" class="list-group">
+	</ul>
+	
+	<p class="bg-warning empty-order">
+		Váš nákupní košík je prázdný!	
+	</p>
+	
+	<div class="panel panel-warning">
+		<div class="panel-heading">Celkem</div>
+		<div class="panel-body total">	
+			<span id="total"></span>
+			Kč
+		</div> 
+		
+	</div>
+	
+	<div id="submit-part">
+		<form role="form" id="order">
+			<div class="form-group">
+				<label for="phone">Telefon</label>
+				<input type="tel" class="form-control" id="phone" name="phone" placeholder="Vaše telefonní číslo">
+			</div>
+			<div class="form-group">
+				<label for="address">Adresa</label>
+				<textarea id="address" name="address" class="form-control" rows="4" placeholder="Adresa pro doručení, poznámka"></textarea>
+			</div>
+		</form>
+	
+		<div class="btn-group submit">
+			<button id="submit" type="button" class="btn btn-success">Objednat</button>
+			<button id="cancel" type="button" class="btn btn-danger">Zrušit</button>
+		</div>
+	</div>
+	
+	<!-- <h1>Historie</h1> -->
+
+	<script type="text/html" id="pizza-order-item">
+		<h4 class="list-group-item-heading" data-content-append="name"><span data-content="id"><span></h4>
+		<table class="pizza-buttons">
+			<tr>
+				<td class="plus"><button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span></button></td>
+				<td class="price"><span class="amount" data-content="amount"></span> x <span data-content="price"></span> Kč</td>
+				<td class="minus"><button type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-minus"></span></button></td>
+			</tr>
+		</table>
+	</script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="jquery.loadTemplate-1.4.3.js"></script>
+	<script src="jquery.validate.js"></script>
+	<script src="jquery.stayInWebApp.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	
+	<script src="pizza.js"></script>
+	
+	<script>
+		$(document).ready(function(){			
+			refreshConfirmPage()
+				
+			$(".plus button").click(function() { addPizzaOrder_click(this); });
+			$(".minus button").click(function() { deletePizzaOrder_click(this); });
+			
+			$("#phone").blur(function () { AppData.setPhone($(this).val()); });
+			$("#address").blur(function () { AppData.setAddress($(this).val()); });
+			
+			$("#phone").val(AppData.getPhone());
+			$("#address").val(AppData.getAddress());
+			
+			$("#cancel").click(function() {
+				AppData.setOrder(new Array());
+				refreshConfirmPage();
+			});
+			
+			$("#submit").click(function() {
+				if ($('#order').valid()) {
+					var order = AppData.getOrder();
+					
+					if (order.length > 0) {
+						AppData.setOrder(new Array());
+						
+						window.location.href = "/success.html";
+					}
+				}
+			});
+			
+			$("#order").validate({
+				rules: {
+					phone: {
+						required: true
+					},
+					address: { 
+						required: true
+					}
+				},
+				messages: {
+					phone: {
+						required: "Zadejte prosím Vaše telefonní číslo"
+					},
+					address: {
+						required: "Zadejte prosím Vaši adresu pro doručení"
+					}
+				}
+			});
+			
+			$.stayInWebApp();			
+		});
+	</script>
+	
+  </body>
+</html>
